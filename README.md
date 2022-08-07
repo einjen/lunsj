@@ -1,6 +1,12 @@
 # lunsj
 lustre jobstats comparison
 
+jobstats need to be enabled:
+```
+lctl conf_param cluster.mdt.job_cleanup_interval=4200
+lctl conf_param cluster.sys.jobid_var=SLURM_JOB_ID
+lctl conf_param cluster.sys.jobid_var=SLURM_JOB_ID cluster.sys.jobid_name=idun@%j@%u@%h@%e
+```
 this tries to summarize all lustre jobstats from compute ndoes per slurm job per user, and additionally summarizes stats from certain specific nodes (login, service, transfernodes etc)
 
 it does NOT (yet) collect stats that originate from users on computenodes that are NOT marked by slurmjob.
